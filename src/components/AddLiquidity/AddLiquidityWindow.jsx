@@ -5,92 +5,109 @@ import {
   Box,
   Select,
   MenuItem,
-  TextField,
   Button,
   Typography,
   InputBase,
-  Divider,
-  SvgIcon,
 } from "@material-ui/core";
 import { makeStyles, styled } from "@material-ui/core/styles";
-import MetamaskSvg from "./metamaskSvg.svg";
 
-
-function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
+function AddLiquidityWindow() {
   const classes = useStyles();
+  const [token1, setToken1] = React.useState("");
+  const [token2, setToken2] = React.useState("");
+  const [amountOfToken1, setAmountToken1] = React.useState("");
+  const [amountOfToken2, setAmountToken2] = React.useState("");
+
+  const handleChangeToken1 = (event) => {
+    setToken1(event.target.value);
+  };
+  const handleChangeToken2 = (event) => {
+    setToken2(event.target.value);
+  };
+  const handleAmountToken1 = (event) => {
+    setAmountToken1(event.target.value);
+  };
+  const handleAmountToken2 = (event) => {
+    setAmountToken2(event.target.value);
+  };
+
+  const onSubmit = (data) => {
+    data.preventDefault();
+    let obj = {
+      typeOfToken1: token1,
+      typeOfToken2: token2,
+      amountOfToken1: data.currentTarget.elements.amountOfToken1.value,
+      amountOfToken2: data.currentTarget.elements.amountOfToken2.value,
+    };
+    console.log(obj);
+  };
+
   return (
     <Paper elevation={3} component={"div"}>
-      <form>
+      <form onSubmit={onSubmit}>
         <Grid container>
           <Grid item xs={12} md={6} className={classes.formComponent}>
             <Typography variant="subtitle1" gutterBottom>
-              <strong>Token In</strong>
+              <strong>Token A</strong>
             </Typography>
             <InputBox display="flex">
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={tokenInType}
-                onChange={(e) => {
-
-                  changeTokenType(e.target.value, "tokenIn");
-                }}
+                value={token1}
+                onChange={handleChangeToken1}
                 style={{ width: "30%" }}
-                disableUnderline={true}
               >
-                <MenuItem value="eth">ETH</MenuItem>
-                <MenuItem value="dai">DAI</MenuItem>
-                <MenuItem value="mkr">MKR</MenuItem>
+                <MenuItem value={"ETH"}>ETH</MenuItem>
+                <MenuItem value={"DAI"}>DAI</MenuItem>
+                <MenuItem value={"MKR"}>MKR</MenuItem>
               </Select>
               <InputBase
                 id="tokenIn"
                 placeholder="0"
-                type="number"
                 style={{ width: "70%" }}
-                inputProps={{
-                  style: {
-                    textAlign: "right",
-                  },
-                }}
-              />
-            </InputBox>
-          </Grid>
-          <Grid item xs={12} md={6} className={classes.formComponent}>
-            <Typography variant="subtitle1" gutterBottom>
-              <strong>Token Out</strong>
-            </Typography>
-            <InputBox display="flex">
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={tokenOutType}
-                onChange={(e) => {
-
-                  changeTokenType(e.target.value, "tokenOut");
-                }}
-                style={{ width: "30%" }}
-                disableUnderline={true}
-              >
-                <MenuItem value="eth">ETH</MenuItem>
-                <MenuItem value="dai">DAI</MenuItem>
-                <MenuItem value="mkr">MKR</MenuItem>
-              </Select>
-              <InputBase
-                id="tokenIn"
-                placeholder="0"
-                type="number"
-                style={{ width: "70%" }}
+                name="amountOfToken1"
+                value={amountOfToken1}
+                onChange={handleAmountToken1}
                 inputProps={{
                   style: { textAlign: "right" },
                 }}
               />
             </InputBox>
-            <ErrorBox component="span">{errorMsg}</ErrorBox>
+          </Grid>
+          <Grid item xs={12} md={6} className={classes.formComponent}>
+            <Typography variant="subtitle1" gutterBottom>
+              <strong>Token B</strong>
+            </Typography>
+            <InputBox display="flex">
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={token2}
+                onChange={handleChangeToken2}
+                style={{ width: "30%" }}
+              >
+                <MenuItem value={"ETH"}>ETH</MenuItem>
+                <MenuItem value={"DAI"}>DAI</MenuItem>
+                <MenuItem value={"MKR"}>MKR</MenuItem>
+              </Select>
+              <InputBase
+                id="tokenIn"
+                placeholder="0"
+                style={{ width: "70%" }}
+                name="amountOfToken2"
+                value={amountOfToken2}
+                onChange={handleAmountToken2}
+                inputProps={{
+                  style: { textAlign: "right" },
+                }}
+              />
+            </InputBox>
           </Grid>
           <Grid item xs={12} md={12}>
             <Box display="flex" justifyContent="flex-end" pr={3}>
               <Typography variant="subtitle2" gutterBottom>
-                <strong>1 KNC = 0.003312 ETH = 0.669 USD</strong>
+                <strong>1 ETH = 106.232552DAI = 21724.54 USD</strong>
               </Typography>
             </Box>
           </Grid>
@@ -101,7 +118,7 @@ function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
               variant="contained"
               size="large"
             >
-              Swap Tokens
+              Add Liquidity
             </Button>
             <Typography
               variant="caption"
@@ -114,27 +131,26 @@ function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
             >
               <br />
               <br />
-              By Swapping, you agree to the
-              <span style={{ color: "#166ee7" }}> Terms and Conditions</span>
+              By Adding tokens, you agree to the
+              <span style={{ color: "#54007a" }}> Terms and Conditions</span>
             </Typography>
           </Grid>
-
-          <Grid
-            item
-            xs={12}
-            md={12}
-            style={{ padding: "10px", textAlign: "center" }}
-          >
-            <Divider variant="middle" />
-            <br />
-            <MetamaskButton type="submit" variant="contained" size="small">
-              <img
-                src={require("./metamaskSvg.svg")}
-                style={{ width: "14px", marginRight: "3px" }}
-              />
-              Connect Metamask
-            </MetamaskButton>
-          </Grid>
+          {/* <Grid
+						item
+						xs={12}
+						md={12}
+						style={{ padding: "10px", textAlign: "center" }}
+					>
+						<Divider variant="middle" />
+						<br />
+						<Button type="submit" variant="contained" size="small">
+							<img
+								src={require("./metamaskSvg.svg")}
+								style={{ width: "10px" }}
+							/>
+							Connect Metamask
+						</Button>
+					</Grid> */}
         </Grid>
       </form>
     </Paper>
@@ -160,16 +176,4 @@ const InputBox = styled(Box)(({ theme }) => ({
   borderRadius: "7px",
 }));
 
-const ErrorBox = styled(Box)(({ theme }) => ({
-  fontSize: "0.9rem",
-  color: "red",
-}));
-
-const MetamaskButton = styled(Button)(({ theme }) => ({
-  "&:hover": {
-    background: "#f6851b",
-    color: "white",
-  },
-}));
-
-export default SwapWindow;
+export default AddLiquidityWindow;
