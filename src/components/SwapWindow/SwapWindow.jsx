@@ -15,12 +15,17 @@ import {
 import { makeStyles, styled } from "@material-ui/core/styles";
 import MetamaskSvg from "./metamaskSvg.svg";
 
-
-function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
+function SwapWindow({
+  tokenInType,
+  tokenOutType,
+  changeTokenType,
+  errorMsg,
+  handleSubmit,
+}) {
   const classes = useStyles();
   return (
     <Paper elevation={3} component={"div"}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Grid container>
           <Grid item xs={12} md={6} className={classes.formComponent}>
             <Typography variant="subtitle1" gutterBottom>
@@ -32,7 +37,6 @@ function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
                 id="demo-simple-select"
                 value={tokenInType}
                 onChange={(e) => {
-
                   changeTokenType(e.target.value, "tokenIn");
                 }}
                 style={{ width: "30%" }}
@@ -46,6 +50,7 @@ function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
                 id="tokenIn"
                 placeholder="0"
                 type="number"
+                name="tokenInAmount"
                 style={{ width: "70%" }}
                 inputProps={{
                   style: {
@@ -65,7 +70,6 @@ function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
                 id="demo-simple-select"
                 value={tokenOutType}
                 onChange={(e) => {
-
                   changeTokenType(e.target.value, "tokenOut");
                 }}
                 style={{ width: "30%" }}
@@ -79,6 +83,7 @@ function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
                 id="tokenIn"
                 placeholder="0"
                 type="number"
+                name="tokenOutAmount"
                 style={{ width: "70%" }}
                 inputProps={{
                   style: { textAlign: "right" },
