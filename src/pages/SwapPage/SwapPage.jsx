@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import SwapWindow from "../../components/SwapWindow";
+import SwapWindow from "../../components/SwapWindow/SwapWindow";
 function SwapPage() {
   return (
     <Grid container justify="center">
