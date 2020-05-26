@@ -15,12 +15,7 @@ import {
 import { makeStyles, styled } from "@material-ui/core/styles";
 import MetamaskSvg from "./metamaskSvg.svg";
 
-function SwapWindow({
-  tokenInType,
-  setTokenInType,
-  tokenOutType,
-  setTokenOutType,
-}) {
+function SwapWindow({ tokenInType, tokenOutType, changeTokenType, errorMsg }) {
   const classes = useStyles();
   return (
     <Paper elevation={3} component={"div"}>
@@ -36,7 +31,7 @@ function SwapWindow({
                 id="demo-simple-select"
                 value={tokenInType}
                 onChange={(e) => {
-                  setTokenInType(e.target.value);
+                  changeTokenType(e.target.value, "tokenIn");
                 }}
                 style={{ width: "30%" }}
                 disableUnderline={true}
@@ -48,6 +43,7 @@ function SwapWindow({
               <InputBase
                 id="tokenIn"
                 placeholder="0"
+                type="number"
                 style={{ width: "70%" }}
                 inputProps={{
                   style: {
@@ -67,7 +63,7 @@ function SwapWindow({
                 id="demo-simple-select"
                 value={tokenOutType}
                 onChange={(e) => {
-                  setTokenOutType(e.target.value);
+                  changeTokenType(e.target.value, "tokenOut");
                 }}
                 style={{ width: "30%" }}
                 disableUnderline={true}
@@ -79,12 +75,14 @@ function SwapWindow({
               <InputBase
                 id="tokenIn"
                 placeholder="0"
+                type="number"
                 style={{ width: "70%" }}
                 inputProps={{
                   style: { textAlign: "right" },
                 }}
               />
             </InputBox>
+            <ErrorBox component="span">{errorMsg}</ErrorBox>
           </Grid>
           <Grid item xs={12} md={12}>
             <Box display="flex" justifyContent="flex-end" pr={3}>
@@ -157,6 +155,11 @@ const InputBox = styled(Box)(({ theme }) => ({
   background: "#f0f0f0",
   padding: theme.spacing(1),
   borderRadius: "7px",
+}));
+
+const ErrorBox = styled(Box)(({ theme }) => ({
+  fontSize: "0.9rem",
+  color: "red",
 }));
 
 const MetamaskButton = styled(Button)(({ theme }) => ({
