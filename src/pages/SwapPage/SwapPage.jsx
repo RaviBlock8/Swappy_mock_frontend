@@ -24,6 +24,16 @@ function SwapPage() {
         setErrorMsg("Not correct type of tokens");
     }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submitted");
+    console.log(
+      "token in amount:" + e.currentTarget.elements.tokenInAmount.value
+    );
+    console.log(
+      "token out amount:" + e.currentTarget.elements.tokenOutAmount.value
+    );
+  };
   return (
     <Grid container justify="center">
       <Grid item xs={12} md={7} style={{ marginTop: "20vh" }}>
@@ -32,6 +42,7 @@ function SwapPage() {
           errorMsg={errorMsg}
           tokenInType={tokenInType}
           tokenOutType={tokenOutType}
+          handleSubmit={handleSubmit}
         />
       </Grid>
     </Grid>
