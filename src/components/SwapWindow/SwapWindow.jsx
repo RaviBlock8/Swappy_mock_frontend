@@ -15,7 +15,12 @@ import {
 import { makeStyles, styled } from "@material-ui/core/styles";
 import MetamaskSvg from "./metamaskSvg.svg";
 
-function SwapWindow() {
+function SwapWindow({
+  tokenInType,
+  setTokenInType,
+  tokenOutType,
+  setTokenOutType,
+}) {
   const classes = useStyles();
   return (
     <Paper elevation={3} component={"div"}>
@@ -29,13 +34,16 @@ function SwapWindow() {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={30}
+                value={tokenInType}
+                onChange={(e) => {
+                  setTokenInType(e.target.value);
+                }}
                 style={{ width: "30%" }}
                 disableUnderline={true}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value="eth">ETH</MenuItem>
+                <MenuItem value="dai">DAI</MenuItem>
+                <MenuItem value="mkr">MKR</MenuItem>
               </Select>
               <InputBase
                 id="tokenIn"
@@ -57,13 +65,16 @@ function SwapWindow() {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={30}
+                value={tokenOutType}
+                onChange={(e) => {
+                  setTokenOutType(e.target.value);
+                }}
                 style={{ width: "30%" }}
                 disableUnderline={true}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value="eth">ETH</MenuItem>
+                <MenuItem value="dai">DAI</MenuItem>
+                <MenuItem value="mkr">MKR</MenuItem>
               </Select>
               <InputBase
                 id="tokenIn"
