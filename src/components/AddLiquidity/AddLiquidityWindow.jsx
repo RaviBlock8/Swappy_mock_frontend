@@ -54,7 +54,8 @@ function AddLiquidityWindow() {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={token1}
+				value={token1}
+				disableUnderline={true}
                 onChange={handleChangeToken1}
                 style={{ width: "30%" }}
               >
@@ -83,7 +84,8 @@ function AddLiquidityWindow() {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={token2}
+				value={token2}
+				disableUnderline={true}
                 onChange={handleChangeToken2}
                 style={{ width: "30%" }}
               >

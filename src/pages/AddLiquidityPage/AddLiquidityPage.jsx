@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import AddLiquidityWindow from "../../components/AddLiquidityWindow";
+import AddLiquidityWindow from "../../components/AddLiquidity/AddLiquidityWindow";
 
 function AddLiquidityPage() {
 	return (
