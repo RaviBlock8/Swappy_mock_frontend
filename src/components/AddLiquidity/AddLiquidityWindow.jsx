@@ -11,19 +11,11 @@ import {
 } from "@material-ui/core";
 import { makeStyles, styled } from "@material-ui/core/styles";
 
-function AddLiquidityWindow() {
+function AddLiquidityWindow({token1, token2, changeTokenType, errorMsg}) {
   const classes = useStyles();
-  const [token1, setToken1] = React.useState("");
-  const [token2, setToken2] = React.useState("");
   const [amountOfToken1, setAmountToken1] = React.useState("");
   const [amountOfToken2, setAmountToken2] = React.useState("");
 
-  const handleChangeToken1 = (event) => {
-    setToken1(event.target.value);
-  };
-  const handleChangeToken2 = (event) => {
-    setToken2(event.target.value);
-  };
   const handleAmountToken1 = (event) => {
     setAmountToken1(event.target.value);
   };
@@ -54,9 +46,11 @@ function AddLiquidityWindow() {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-				value={token1}
-				disableUnderline={true}
-                onChange={handleChangeToken1}
+                value={token1}
+                disableUnderline={true}
+                onChange={(e) => {
+                  changeTokenType(e.target.value, "token1");
+                }}
                 style={{ width: "30%" }}
               >
                 <MenuItem value={"ETH"}>ETH</MenuItem>
@@ -84,9 +78,11 @@ function AddLiquidityWindow() {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-				value={token2}
-				disableUnderline={true}
-                onChange={handleChangeToken2}
+                value={token2}
+                disableUnderline={true}
+                onChange={(e) => {
+                  changeTokenType(e.target.value, "token2");
+                }}
                 style={{ width: "30%" }}
               >
                 <MenuItem value={"ETH"}>ETH</MenuItem>
@@ -105,6 +101,7 @@ function AddLiquidityWindow() {
                 }}
               />
             </InputBox>
+            <ErrorBox component="span">{errorMsg}</ErrorBox>
           </Grid>
           <Grid item xs={12} md={12}>
             <Box display="flex" justifyContent="flex-end" pr={3}>
@@ -176,6 +173,11 @@ const InputBox = styled(Box)(({ theme }) => ({
   background: "#f0f0f0",
   padding: theme.spacing(1),
   borderRadius: "7px",
+}));
+
+const ErrorBox = styled(Box)(({ theme }) => ({
+  fontSize: "0.9rem",
+  color: "red",
 }));
 
 export default AddLiquidityWindow;
