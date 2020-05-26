@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import SwapWindow from "../../components/SwapWindow/SwapWindow";
+import { minHeight } from "@material-ui/system";
 function SwapPage() {
   const [tokenInType, setTokenInType] = useState("eth");
   const [tokenOutType, setTokenOutType] = useState("dai");
@@ -35,7 +36,7 @@ function SwapPage() {
     );
   };
   return (
-    <Grid container justify="center" style={{ height: "90vh" }}>
+    <Grid container justify="center" minHeight="90vh">
       <Grid item xs={12} md={7} style={{ marginTop: "20vh" }}>
         <SwapWindow
           changeTokenType={changeTokenType}
