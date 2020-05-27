@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles, styled } from "@material-ui/core/styles";
 
-function AddLiquidityWindow({token1, token2, changeTokenType, errorMsg}) {
+function AddLiquidityWindow({ token1, token2, changeTokenType, errorMsg }) {
   const classes = useStyles();
   const [amountOfToken1, setAmountToken1] = React.useState("");
   const [amountOfToken2, setAmountToken2] = React.useState("");
@@ -131,7 +131,7 @@ function AddLiquidityWindow({token1, token2, changeTokenType, errorMsg}) {
               <br />
               <br />
               By Adding tokens, you agree to the
-              <span style={{ color: "#54007a" }}> Terms and Conditions</span>
+              <span style={{ color: "#166ee7" }}> Terms and Conditions</span>
             </Typography>
           </Grid>
           {/* <Grid

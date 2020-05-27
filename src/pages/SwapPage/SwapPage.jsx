@@ -36,9 +36,8 @@ function SwapPage() {
     );
   };
   return (
-
     <Grid container justify="center" minHeight="90vh">
-      <Grid item xs={12} md={7} style={{ marginTop: "20vh" }}>
+      <Grid item xs={12} md={7} style={{ marginTop: "7vh" }}>
         <SwapWindow
           changeTokenType={changeTokenType}
           errorMsg={errorMsg}
