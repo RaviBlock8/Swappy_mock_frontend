@@ -27,7 +27,7 @@ function AddLiquidityPage() {
   };
   return (
     <Grid container justify="center">
-      <Grid item xs={12} md={7} style={{ marginTop: "20vh" }}>
+      <Grid item xs={12} md={7} style={{ marginTop: "10vh" }}>
         <AddLiquidityWindow
           changeTokenType={changeTokenType}
           errorMsg={errorMsg}
