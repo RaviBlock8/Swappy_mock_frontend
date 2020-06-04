@@ -6,7 +6,7 @@ function SwapPage() {
   const [tokenInType, setTokenInType] = useState("eth");
   const [tokenOutType, setTokenOutType] = useState("dai");
   const [errorMsg, setErrorMsg] = useState("");
-  const regex = /^[0-9\b]+$/;
+  const regex = /^[0-9\b]+/;
   const changeTokenType = (tokenName, tokenType) => {
     switch (tokenType) {
       case "tokenIn":
