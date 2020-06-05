@@ -7,8 +7,8 @@ body, .container {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: linear-gradient(rgb(2, 22, 107),transparent);
-    background-color:rgb(241, 230, 72);
+    /* background: linear-gradient(rgb(2, 22, 107),transparent);
+    background-color:rgb(241, 230, 72); */
     height: 100vh;
 }
 
@@ -36,8 +36,8 @@ body.with-container > * {
     justify-content: center;
     text-align: center;
     font-size: 32px;
-    background: linear-gradient(rgba(73, 4, 90, 0.911),transparent);
-    background-color:rgb(226, 75, 15);
+    /* background: linear-gradient(rgba(73, 4, 90, 0.911),transparent);
+    background-color:rgb(226, 75, 15); */
     color: #fff;
 }
 
